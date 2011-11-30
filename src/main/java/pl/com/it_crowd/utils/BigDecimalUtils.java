@@ -1,4 +1,4 @@
-package pl.labno.bernard.itcrowd_utils;
+package pl.com.it_crowd.utils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

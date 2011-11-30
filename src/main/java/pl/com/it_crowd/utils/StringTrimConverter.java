@@ -1,4 +1,4 @@
-package pl.labno.bernard.itcrowd_utils;
+package pl.com.it_crowd.utils;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
