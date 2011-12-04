@@ -1,4 +1,4 @@
-package pl.com.it_crowd.utils;
+package pl.com.it_crowd.utils.faces;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
