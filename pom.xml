@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>pl.com.it-crowd</groupId>
-    <artifactId>utils</artifactId>
+    <artifactId>itcrowd-utils</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
     <dependencies>

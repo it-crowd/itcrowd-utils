@@ -103,7 +103,7 @@ public class UIInputContainer extends UIComponentBase implements NamingContainer
     /**
      * The standard component type for this component.
      */
-    public static final String COMPONENT_TYPE = "com.timetrack.web.UIInputContainer";
+    public static final String COMPONENT_TYPE = "pl.com.it_crowd.utils.faces.UIInputContainer";
 
     protected static final String HTML_CLASS_ATTR_NAME = "class";
 
