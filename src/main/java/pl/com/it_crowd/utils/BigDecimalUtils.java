@@ -20,7 +20,7 @@ public final class BigDecimalUtils {
     public static BigDecimal scale(BigDecimal value, int scale)
     {
         if (value != null && value.scale() != scale) {
-            return value.setScale(2, RoundingMode.HALF_UP);
+            return value.setScale(scale, RoundingMode.HALF_UP);
         } else {
             return value;
         }
