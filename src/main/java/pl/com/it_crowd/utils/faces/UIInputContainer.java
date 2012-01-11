@@ -35,12 +35,17 @@ import javax.validation.Validation;
 import javax.validation.ValidationException;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import javax.validation.constraints.NotNull;
+import javax.validation.groups.Default;
 import javax.validation.metadata.BeanDescriptor;
+import javax.validation.metadata.ConstraintDescriptor;
 import javax.validation.metadata.PropertyDescriptor;
 import java.io.IOException;
+import java.lang.annotation.ElementType;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 /**
  * <strong>UIInputContainer</strong> is a supplemental component for a JSF 2.0 composite component encapsulating one or more
@@ -510,7 +515,19 @@ public class UIInputContainer extends UIComponentBase implements NamingContainer
                 if (vref != null) { // valueExpressionAnalyzer can return a null value. The condition prevents a NPE
                     BeanDescriptor constraintsForClass = validator.getConstraintsForClass(vref.getBase().getClass());
                     PropertyDescriptor d = constraintsForClass.getConstraintsForProperty((String) vref.getProperty());
-                    return (d != null) && d.hasConstraints();
+                    if (d != null) {
+                        //checking property's constraints in search for NotNull annotation
+                        final Set<ConstraintDescriptor<?>> constraints = d.findConstraints()
+                            .declaredOn(ElementType.FIELD)
+                            .unorderedAndMatchingGroups(Default.class)
+                            .getConstraintDescriptors();
+                        for (ConstraintDescriptor constraint : constraints) {
+                            if (constraint.getAnnotation().annotationType().equals(NotNull.class)) {
+                                return true;
+                            }
+                        }
+                    }
+                    return false;
                 }
             }
             return false;
