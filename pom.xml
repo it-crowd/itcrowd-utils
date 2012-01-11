@@ -4,7 +4,7 @@
 
     <groupId>pl.com.it-crowd</groupId>
     <artifactId>itcrowd-utils</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
@@ -83,7 +83,7 @@
     </distributionManagement>
 
     <scm>
-        <developerConnection>scm:svn:https://it-crowd.com.pl/svn/itcrowd-utils/tags/itcrowd-utils-1.0.2</developerConnection>
+        <developerConnection>scm:svn:https://it-crowd.com.pl/svn/itcrowd-utils/trunk</developerConnection>
     </scm>
 
 </project>
