@@ -1,5 +1,6 @@
 package pl.com.it_crowd.utils.test;
 
+import org.jboss.logging.Logger;
 import org.junit.Rule;
 import org.junit.rules.TestWatchman;
 import org.junit.runners.model.FrameworkMethod;
@@ -16,12 +17,15 @@ import java.util.Properties;
 public class UnitilsAwareTest {
 // ------------------------------ FIELDS ------------------------------
 
+    private Logger logger = Logger.getLogger(getClass());
+
     @SuppressWarnings({"UnusedDeclaration"})
     @Rule
     public TestWatchman unitilsLuncher = new TestWatchman() {
         @Override
         public void starting(FrameworkMethod method)
         {
+            logger.info("Starting test " + method.getName());
             if (isOnServer()) {
                 return;
             }
