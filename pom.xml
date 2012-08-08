@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>pl.com.it-crowd</groupId>
     <artifactId>itcrowd-utils</artifactId>
     <version>1.0.4-SNAPSHOT</version>
+    <properties>
+        <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>javax.el</groupId>
@@ -68,7 +74,7 @@
         <dependency>
             <groupId>pl.com.it-crowd.seam3.persistence-framework</groupId>
             <artifactId>seam3-persistence-framework-domain</artifactId>
-            <version>1.1.2-SNAPSHOT</version>
+            <version>1.1.1</version>
             <optional>true</optional>
         </dependency>
     </dependencies>
