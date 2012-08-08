@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>pl.com.it-crowd</groupId>
     <artifactId>itcrowd-utils</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4-SNAPSHOT</version>
     <dependencies>
         <dependency>
             <groupId>javax.el</groupId>
@@ -68,7 +68,7 @@
         <dependency>
             <groupId>pl.com.it-crowd.seam3.persistence-framework</groupId>
             <artifactId>seam3-persistence-framework-domain</artifactId>
-            <version>1.1.1</version>
+            <version>1.1.2-SNAPSHOT</version>
             <optional>true</optional>
         </dependency>
     </dependencies>
@@ -100,7 +100,7 @@
         </plugins>
     </build>
     <scm>
-        <developerConnection>scm:svn:https://it-crowd.com.pl/svn/itcrowd-utils/tags/itcrowd-utils-1.0.3</developerConnection>
+        <developerConnection>scm:svn:https://it-crowd.com.pl/svn/itcrowd-utils/trunk</developerConnection>
     </scm>
     <distributionManagement>
         <repository>
