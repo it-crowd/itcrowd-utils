@@ -5,8 +5,10 @@ import pl.com.it_crowd.utils.config.converter.SettingConverter;
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
+import java.io.Serializable;
 
-public abstract class ApplicationConfig {
+//TODO we need to make this class really serializable
+public abstract class ApplicationConfig implements Serializable {
 // ------------------------------ FIELDS ------------------------------
 
     protected PBEHelper pbeHelper;
@@ -49,23 +51,26 @@ public abstract class ApplicationConfig {
         return load(id.name(), converter);
     }
 
-    protected boolean save(Setting setting)
+    protected String loadAndDecrypt(Enum id)
     {
-        return save(setting, null);
+        return loadAndDecrypt(id.name());
     }
 
-    protected boolean save(Setting setting, String encryptionKey)
+    protected String loadAndDecrypt(String id)
     {
-        if (encryptionKey != null) {
-            setting.setValue(pbeHelper.encrypt(setting.getValue()));
-        }
+        final String value = load(id);
+        return pbeHelper.decrypt(value);
+    }
+
+    protected boolean save(Setting setting)
+    {
         settingDAO.save(setting);
         return true;
     }
 
     protected boolean save(String id, String value)
     {
-        return save(new Setting(id, value), null);
+        return save(new Setting(id, value));
     }
 
     protected boolean save(Enum id, String value)
@@ -73,13 +78,19 @@ public abstract class ApplicationConfig {
         return save(id.name(), value);
     }
 
-    protected boolean save(String id, String value, String encryptionKey)
+    protected boolean saveEncrypted(Setting setting)
     {
-        return save(new Setting(id, value), encryptionKey);
+        setting.setValue(pbeHelper.encrypt(setting.getValue()));
+        return save(setting);
     }
 
-    protected boolean save(Enum id, String value, String encryptionKey)
+    protected boolean saveEncrypted(String id, String value)
     {
-        return save(id.name(), value, encryptionKey);
+        return saveEncrypted(new Setting(id, value));
+    }
+
+    protected boolean saveEncrypted(Enum id, String value)
+    {
+        return saveEncrypted(id.name(), value);
     }
 }
