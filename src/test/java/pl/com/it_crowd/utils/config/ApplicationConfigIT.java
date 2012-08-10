@@ -19,7 +19,7 @@ import javax.inject.Inject;
 import java.io.File;
 
 @RunWith(Arquillian.class)
-public class ApplicationConfigTest {
+public class ApplicationConfigIT {
 // ------------------------------ FIELDS ------------------------------
 
     @Inject
@@ -36,7 +36,7 @@ public class ApplicationConfigTest {
     @Deployment
     public static WebArchive createDeployment()
     {
-        final WebArchive archive = ShrinkWrap.create(WebArchive.class, ApplicationConfigTest.class.getSimpleName() + ".war");
+        final WebArchive archive = ShrinkWrap.create(WebArchive.class, ApplicationConfigIT.class.getSimpleName() + ".war");
         archive.addPackages(true, "pl.com.it_crowd.utils");
         archive.addAsWebInfResource(new StringAsset(getBeansDescriptor().exportAsString()), "beans.xml");
         archive.addClass(SettingDAOMock.class);
