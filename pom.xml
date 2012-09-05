@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>pl.com.it-crowd</groupId>
     <artifactId>itcrowd-utils</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.6-SNAPSHOT</version>
     <properties>
         <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -163,7 +163,7 @@
         </plugins>
     </build>
     <scm>
-        <developerConnection>scm:svn:https://it-crowd.com.pl/svn/itcrowd-utils/tags/itcrowd-utils-1.0.5</developerConnection>
+        <developerConnection>scm:svn:https://it-crowd.com.pl/svn/itcrowd-utils/trunk</developerConnection>
     </scm>
     <distributionManagement>
         <repository>
