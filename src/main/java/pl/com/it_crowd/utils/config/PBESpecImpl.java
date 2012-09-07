@@ -3,9 +3,11 @@ package pl.com.it_crowd.utils.config;
 import org.apache.commons.lang.StringUtils;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.inject.Alternative;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+@Alternative
 public class PBESpecImpl implements PBESpec {
 // ------------------------------ FIELDS ------------------------------
 

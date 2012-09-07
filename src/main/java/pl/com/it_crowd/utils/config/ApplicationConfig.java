@@ -11,7 +11,7 @@ import java.io.Serializable;
 public abstract class ApplicationConfig implements Serializable {
 // ------------------------------ FIELDS ------------------------------
 
-    protected PBEHelper pbeHelper;
+    private PBEHelper pbeHelper;
 
     @Inject
     protected Instance<PBESpec> pbeSpecInstance;
@@ -22,8 +22,10 @@ public abstract class ApplicationConfig implements Serializable {
     @PostConstruct
     protected void init()
     {
-        final PBESpec spec = pbeSpecInstance.get();
-        pbeHelper = new PBEHelper(spec.getAlgorithm(), spec.getPassword(), spec.getSalt(), spec.getIterationCount());
+        if (!pbeSpecInstance.isUnsatisfied()) {
+            final PBESpec spec = pbeSpecInstance.get();
+            pbeHelper = new PBEHelper(spec.getAlgorithm(), spec.getPassword(), spec.getSalt(), spec.getIterationCount());
+        }
     }
 
     protected String load(Enum id)
@@ -59,7 +61,7 @@ public abstract class ApplicationConfig implements Serializable {
     protected String loadAndDecrypt(String id)
     {
         final String value = load(id);
-        return pbeHelper.decrypt(value);
+        return getPbeHelper().decrypt(value);
     }
 
     protected boolean save(Setting setting)
@@ -80,7 +82,7 @@ public abstract class ApplicationConfig implements Serializable {
 
     protected boolean saveEncrypted(Setting setting)
     {
-        setting.setValue(pbeHelper.encrypt(setting.getValue()));
+        setting.setValue(getPbeHelper().encrypt(setting.getValue()));
         return save(setting);
     }
 
@@ -92,5 +94,13 @@ public abstract class ApplicationConfig implements Serializable {
     protected boolean saveEncrypted(Enum id, String value)
     {
         return saveEncrypted(id.name(), value);
+    }
+
+    protected PBEHelper getPbeHelper()
+    {
+        if (pbeHelper == null) {
+            throw new IllegalStateException("Encryption not supported due to lack of PBESpec");
+        }
+        return pbeHelper;
     }
 }
