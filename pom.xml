@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>pl.com.it-crowd</groupId>
+    <groupId>pl.itcrowd.utils</groupId>
     <artifactId>itcrowd-utils</artifactId>
     <version>1.0.6-SNAPSHOT</version>
     <properties>
@@ -15,7 +16,7 @@
             <dependency>
                 <groupId>org.jboss.arquillian</groupId>
                 <artifactId>arquillian-bom</artifactId>
-                <version>1.0.2.Final</version>
+                <version>1.0.3.Final</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
@@ -83,6 +84,12 @@
             <optional>true</optional>
         </dependency>
         <dependency>
+            <groupId>org.jboss.solder</groupId>
+            <artifactId>solder-api</artifactId>
+            <version>3.1.1.Final</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
             <groupId>org.richfaces.core</groupId>
             <artifactId>richfaces-core-api</artifactId>
             <version>4.2.2.Final</version>
@@ -101,9 +108,9 @@
             <optional>true</optional>
         </dependency>
         <dependency>
-            <groupId>pl.com.it-crowd.seam3.persistence-framework</groupId>
+            <groupId>pl.itcrowd.seam3.persistence-framework</groupId>
             <artifactId>seam3-persistence-framework-domain</artifactId>
-            <version>1.1.1</version>
+            <version>1.1.3</version>
             <optional>true</optional>
         </dependency>
         <dependency>
