@@ -47,7 +47,7 @@
         </plugins>
     </build>
     <scm>
-        <developerConnection>scm:svn:https://it-crowd.com.pl/svn/itcrowd-utils/trunk</developerConnection>
+        <developerConnection>scm:git:https://github.com/it-crowd/itcrowd-utils.git</developerConnection>
     </scm>
     <distributionManagement>
         <repository>
