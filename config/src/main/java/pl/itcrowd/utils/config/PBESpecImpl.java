@@ -2,20 +2,20 @@ package pl.itcrowd.utils.config;
 
 import org.apache.commons.lang.StringUtils;
 
-import javax.annotation.PostConstruct;
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Alternative;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 @Alternative
+@ApplicationScoped
 public class PBESpecImpl implements PBESpec {
-// ------------------------------ FIELDS ------------------------------
 
     private String algorithm;
 
     private String algorithmJNDI;
 
-    private int iterationCount;
+    private Integer iterationCount;
 
     private String iterationCountJNDI;
 
@@ -27,40 +27,94 @@ public class PBESpecImpl implements PBESpec {
 
     private String saltJNDI;
 
-// --------------------- GETTER / SETTER METHODS ---------------------
-
     @Override
     public String getAlgorithm()
     {
+        if (null == algorithm) {
+            init();
+        }
         return algorithm;
+    }
+
+    public String getAlgorithmJNDI()
+    {
+        return algorithmJNDI;
+    }
+
+    public void setAlgorithmJNDI(String algorithmJNDI)
+    {
+        this.algorithmJNDI = algorithmJNDI;
     }
 
     @Override
     public int getIterationCount()
     {
+        if (null == iterationCount) {
+            init();
+        }
         return iterationCount;
+    }
+
+    public String getIterationCountJNDI()
+    {
+        return iterationCountJNDI;
+    }
+
+    public void setIterationCountJNDI(String iterationCountJNDI)
+    {
+        this.iterationCountJNDI = iterationCountJNDI;
     }
 
     @Override
     public String getPassword()
     {
+        if (null == password) {
+            init();
+        }
         return password;
+    }
+
+    public String getPasswordJNDI()
+    {
+        return passwordJNDI;
+    }
+
+    public void setPasswordJNDI(String passwordJNDI)
+    {
+        this.passwordJNDI = passwordJNDI;
     }
 
     @Override
     public String getSalt()
     {
+        if (null == salt) {
+            init();
+        }
         return salt;
     }
 
-    @PostConstruct
-    private void init() throws NamingException
+    public String getSaltJNDI()
+    {
+        return saltJNDI;
+    }
+
+    public void setSaltJNDI(String saltJNDI)
+    {
+        this.saltJNDI = saltJNDI;
+    }
+
+    private void init()
     {
         if (StringUtils.isBlank(algorithmJNDI) || StringUtils.isBlank(iterationCountJNDI) || StringUtils.isBlank(passwordJNDI) || StringUtils.isBlank(
             saltJNDI)) {
             throw new InvalidConfigurationException("One of attributes algorithmJNDI,iterationCountJNDI,passwordJNDI,saltJNDI is missing");
         }
-        InitialContext context = new InitialContext();
+        InitialContext context;
+        try {
+            context = new InitialContext();
+        } catch (NamingException e) {
+            throw new RuntimeException(e);
+        }
         try {
             algorithm = (String) context.lookup(algorithmJNDI);
             iterationCount = Integer.parseInt((String) context.lookup(iterationCountJNDI));
