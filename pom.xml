@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>pl.itcrowd.utils</groupId>
     <artifactId>itcrowd-utils-parent</artifactId>
-    <version>1.0.7</version>
+    <version>1.0.8-SNAPSHOT</version>
     <packaging>pom</packaging>
     <properties>
         <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
@@ -55,7 +55,7 @@
     </build>
     <scm>
         <developerConnection>scm:git:https://github.com/it-crowd/itcrowd-utils.git</developerConnection>
-      <tag>itcrowd-utils-1.0.7</tag>
+      <tag>HEAD</tag>
   </scm>
     <distributionManagement>
         <repository>

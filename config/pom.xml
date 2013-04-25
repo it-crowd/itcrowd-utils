@@ -4,7 +4,7 @@
     <parent>
         <artifactId>itcrowd-utils-parent</artifactId>
         <groupId>pl.itcrowd.utils</groupId>
-        <version>1.0.7</version>
+        <version>1.0.8-SNAPSHOT</version>
     </parent>
     <artifactId>itcrowd-utils-config</artifactId>
     <dependencyManagement>
